@@ -3,179 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HTML & Git Bash Notes - Retro Ghibli Style</title>
-    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <title>HTML & Git Bash Notes - Evergreen Theme</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Open+Sans:wght@300;400;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        @font-face {
-            font-family: 'Akira';
-            src: url('https://fonts.cdnfonts.com/css/akira-expanded') format('woff2');
-        }
-
         :root {
-            --primary-color: #ff0051;
-            --secondary-color: #00ff95;
-            --accent-color: #86c9c0;
-            --dark-bg: #1a1a1a;
-            --light-bg: #f0f7f9;
+            --primary-color: #2d5a27;
+            --secondary-color: #8cb369;
+            --accent-color: #5c8001;
+            --background-color: #f4f7f1;
+            --text-color: #2c3e2d;
+            --code-bg: #edf2e7;
+            --card-bg: #ffffff;
         }
 
         body {
-            font-family: 'Share Tech Mono', monospace;
-            line-height: 1.6;
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.8;
             margin: 0;
             padding: 0;
-            background-color: var(--dark-bg);
-            background-image: 
-                url('https://i.imgur.com/8MhwzxY.png'),
-                linear-gradient(45deg, #1a1a1a 0%, #2a2a2a 100%);
-            background-attachment: fixed;
-            background-size: cover;
-            color: #ffffff;
+            background-color: var(--background-color);
+            color: var(--text-color);
             min-height: 100vh;
         }
 
         .page-wrapper {
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 40px 20px;
             position: relative;
         }
 
         .container {
-            background: rgba(26, 26, 26, 0.95);
+            background: var(--card-bg);
             padding: 40px;
-            border-radius: 25px;
-            box-shadow: 0 0 50px rgba(0, 255, 149, 0.1),
-                        0 0 100px rgba(255, 0, 81, 0.1);
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(134, 201, 192, 0.3);
-        }
-
-        .container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: linear-gradient(90deg, 
-                var(--primary-color) 0%, 
-                var(--secondary-color) 50%,
-                var(--primary-color) 100%);
-            animation: gradient-shift 5s linear infinite;
-        }
-
-        @keyframes gradient-shift {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 200% 50%; }
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(45, 90, 39, 0.05);
         }
 
         h1 {
-            font-family: 'Akira', sans-serif;
+            font-family: 'Cormorant Garamond', serif;
             color: var(--primary-color);
             text-align: center;
-            font-size: 3em;
+            font-size: 2.8em;
             margin: 40px 0;
-            text-shadow: 
-                3px 3px 0px var(--dark-bg),
-                5px 5px 0px rgba(0, 255, 149, 0.5);
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            position: relative;
-        }
-
-        h1::after {
-            content: attr(data-text);
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            top: 0;
-            color: var(--secondary-color);
-            filter: blur(1px);
-            opacity: 0.7;
-            z-index: -1;
+            font-weight: 600;
+            letter-spacing: 1px;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 20px;
         }
 
         h2 {
-            font-family: 'Akira', sans-serif;
-            color: var(--secondary-color);
-            border-bottom: 3px solid var(--primary-color);
-            padding-bottom: 15px;
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--primary-color);
             margin-top: 40px;
             font-size: 1.8em;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            font-weight: 600;
+            letter-spacing: 0.5px;
         }
 
         .note-card {
-            background: rgba(40, 40, 40, 0.95);
-            padding: 30px;
-            margin: 30px 0;
-            border-radius: 20px;
-            box-shadow: 
-                0 5px 20px rgba(0, 0, 0, 0.3),
-                0 0 15px rgba(134, 201, 192, 0.2);
-            border-left: 5px solid var(--primary-color);
+            background: var(--card-bg);
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(45, 90, 39, 0.08);
+            border-left: 3px solid var(--secondary-color);
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
         }
 
         .note-card:hover {
-            transform: translateY(-5px) scale(1.01);
-            box-shadow: 
-                0 8px 25px rgba(0, 0, 0, 0.4),
-                0 0 20px rgba(134, 201, 192, 0.3);
-        }
-
-        .note-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(135deg, 
-                transparent 50%, 
-                rgba(255, 0, 81, 0.1) 50%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(45, 90, 39, 0.12);
         }
 
         code {
-            background-color: var(--dark-bg);
-            padding: 4px 8px;
+            font-family: 'Fira Code', monospace;
+            background-color: var(--code-bg);
+            padding: 3px 6px;
             border-radius: 4px;
-            color: var(--secondary-color);
-            font-family: 'Share Tech Mono', monospace;
-            border: 1px solid rgba(134, 201, 192, 0.3);
+            color: var(--primary-color);
+            font-size: 0.9em;
         }
 
         .terminal-card {
-            background-color: var(--dark-bg);
-            color: var(--secondary-color);
-            padding: 25px;
-            border-radius: 15px;
-            margin: 20px 0;
-            font-family: 'Share Tech Mono', monospace;
-            border: 1px solid var(--primary-color);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .terminal-card::before {
-            content: '>';
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            color: var(--primary-color);
-            font-size: 1.2em;
-            opacity: 0.5;
+            background-color: var(--code-bg);
+            color: var(--text-color);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9em;
         }
 
         .command {
-            color: var(--primary-color);
-            margin: 15px 0;
+            color: var(--accent-color);
+            margin: 12px 0;
             padding-left: 20px;
             position: relative;
         }
@@ -184,83 +106,284 @@
             content: '$';
             position: absolute;
             left: 0;
-            color: var(--accent-color);
+            color: var(--secondary-color);
         }
 
         ul li {
-            margin: 12px 0;
+            margin: 10px 0;
             position: relative;
-            padding-left: 25px;
+            padding-left: 20px;
         }
 
         ul li::before {
-            content: '→';
+            content: '•';
             position: absolute;
             left: 0;
-            color: var(--primary-color);
+            color: var(--secondary-color);
         }
 
         .section-divider {
-            height: 4px;
+            height: 2px;
             background: linear-gradient(90deg, 
                 transparent,
-                var(--primary-color),
                 var(--secondary-color),
-                var(--primary-color),
                 transparent);
-            margin: 60px 0;
-            border-radius: 2px;
-            opacity: 0.8;
+            margin: 50px 0;
+            opacity: 0.5;
         }
 
         .example {
-            background-color: var(--dark-bg);
-            padding: 25px;
-            border-radius: 15px;
-            margin: 20px 0;
-            color: var(--secondary-color);
-            font-family: 'Share Tech Mono', monospace;
-            border: 1px solid var(--primary-color);
-            position: relative;
-            box-shadow: 0 0 20px rgba(0, 255, 149, 0.1);
-        }
-
-        @keyframes glow {
-            0% { box-shadow: 0 0 20px rgba(0, 255, 149, 0.1); }
-            50% { box-shadow: 0 0 30px rgba(255, 0, 81, 0.2); }
-            100% { box-shadow: 0 0 20px rgba(0, 255, 149, 0.1); }
-        }
-
-        .note-card:hover .terminal-card,
-        .note-card:hover .example {
-            animation: glow 2s infinite;
+            background-color: var(--code-bg);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            color: var(--text-color);
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9em;
         }
 
         /* Scrollbar Styling */
         ::-webkit-scrollbar {
-            width: 10px;
+            width: 8px;
         }
 
         ::-webkit-scrollbar-track {
-            background: var(--dark-bg);
+            background: var(--background-color);
         }
 
         ::-webkit-scrollbar-thumb {
-            background: var(--primary-color);
-            border-radius: 5px;
+            background: var(--secondary-color);
+            border-radius: 4px;
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: var(--secondary-color);
+            background: var(--accent-color);
+        }
+
+        p {
+            color: var(--text-color);
+            line-height: 1.8;
+            font-size: 1em;
+        }
+
+        /* Subtle leaf pattern in background */
+        .page-wrapper::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgb3BhY2l0eT0iMC4xIj48cGF0aCBkPSJNMzAgMEMxMy40IDAgMCAxMy40IDAgMzBzMTMuNCAzMCAzMCAzMCAzMC0xMy40IDMwLTMwUzQ2LjYgMCAzMCAwem0wIDU0Qzk2LjUgNTQgMCA0Ny41IDAgMzBTMTYuNSA2IDMwIDZzMzAgMTYuNSAzMCAzMC0xNi41IDI0LTMwIDI0eiIgZmlsbD0iIzJkNWEyNyIvPjwvc3ZnPg==');
+            opacity: 0.05;
+            z-index: -1;
+            pointer-events: none;
         }
     </style>
 </head>
 <body>
     <div class="page-wrapper">
         <div class="container">
-            <h1 data-text="🌿 HTML & Git Bash Notes 🌿">🌿 HTML & Git Bash Notes 🌿</h1>
+            <h1>HTML & Git Bash Notes</h1>
 
-            <!-- HTML Section -->
+            <!-- Introduction Section -->
+            <div class="note-card">
+                <h2>Welcome to Web Development</h2>
+                <p>This comprehensive guide covers the fundamentals of HTML (HyperText Markup Language) and Git Bash, essential tools for modern web development. Whether you're a beginner or looking to refresh your knowledge, these notes will help you understand the building blocks of web development.</p>
+            </div>
+
+            <!-- Learning Path -->
+            <div class="note-card">
+                <h2>Learning Path Overview</h2>
+                <div class="example">
+                    <p>1. HTML Basics → Structure & Elements</p>
+                    <p>2. HTML Forms & Media → User Interaction</p>
+                    <p>3. Git Fundamentals → Version Control</p>
+                    <p>4. Project Workflow → Putting it all together</p>
+                </div>
+            </div>
+
+            <!-- Tools You'll Need -->
+            <div class="note-card">
+                <h2>Essential Tools for Development</h2>
+                <ul>
+                    <li><strong>Text Editor:</strong> VS Code, Sublime Text, or Atom</li>
+                    <li><strong>Browser:</strong> Chrome, Firefox, or Edge with DevTools</li>
+                    <li><strong>Git Bash:</strong> For version control and command line operations</li>
+                    <li><strong>GitHub Account:</strong> For storing and sharing your code</li>
+                </ul>
+            </div>
+
+            <div class="section-divider"></div>
+
+            <!-- Enhanced HTML Section -->
+            <h2>HTML Deep Dive</h2>
+            
+            <div class="note-card">
+                <h2>Document Structure</h2>
+                <div class="example">
+                    <code>
+                    &lt;!DOCTYPE html&gt;
+                    &lt;html lang="en"&gt;
+                        &lt;head&gt;
+                            &lt;meta charset="UTF-8"&gt;
+                            &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+                            &lt;title&gt;Your Page Title&lt;/title&gt;
+                        &lt;/head&gt;
+                        &lt;body&gt;
+                            &lt;!-- Your content goes here --&gt;
+                        &lt;/body&gt;
+                    &lt;/html&gt;
+                    </code>
+                </div>
+            </div>
+
+            <div class="note-card">
+                <h2>Meta Tags Explained</h2>
+                <ul>
+                    <li><code>&lt;meta charset="UTF-8"&gt;</code> - Character encoding</li>
+                    <li><code>&lt;meta name="viewport"&gt;</code> - Mobile responsiveness</li>
+                    <li><code>&lt;meta name="description"&gt;</code> - SEO description</li>
+                    <li><code>&lt;meta name="keywords"&gt;</code> - SEO keywords</li>
+                </ul>
+            </div>
+
+            <div class="note-card">
+                <h2>Text Formatting Elements</h2>
+                <div class="example">
+                    <code>&lt;strong&gt;</code> - Strong importance<br>
+                    <code>&lt;em&gt;</code> - Emphasized text<br>
+                    <code>&lt;mark&gt;</code> - Marked/highlighted text<br>
+                    <code>&lt;sub&gt;</code> - Subscript text<br>
+                    <code>&lt;sup&gt;</code> - Superscript text<br>
+                    <code>&lt;blockquote&gt;</code> - Long quotations
+                </div>
+            </div>
+
+            <div class="note-card">
+                <h2>HTML5 Semantic Elements</h2>
+                <div class="example">
+                    <pre>
+╔════════════════════╗
+║      &lt;header&gt;      ║
+╠════════════════════╣
+║       &lt;nav&gt;       ║
+╠════════════════════╣
+║      &lt;main&gt;       ║
+║  ╔══════════════╗  ║
+║  ║  &lt;article&gt;   ║  ║
+║  ║  ╔════════╗  ║  ║
+║  ║  ║&lt;section&gt;║  ║  ║
+║  ║  ╚════════╝  ║  ║
+║  ╚══════════════╝  ║
+╠════════════════════╣
+║      &lt;aside&gt;      ║
+╠════════════════════╣
+║     &lt;footer&gt;      ║
+╚════════════════════╝</pre>
+                </div>
+            </div>
+
+            <div class="note-card">
+                <h2>Forms & Input Types</h2>
+                <div class="example">
+                    <code>
+                    &lt;form action="/submit" method="POST"&gt;
+                        &lt;input type="text"&gt; - Text input
+                        &lt;input type="email"&gt; - Email input
+                        &lt;input type="password"&gt; - Password
+                        &lt;input type="number"&gt; - Numbers
+                        &lt;input type="date"&gt; - Date picker
+                        &lt;input type="file"&gt; - File upload
+                        &lt;input type="checkbox"&gt; - Checkboxes
+                        &lt;input type="radio"&gt; - Radio buttons
+                        &lt;textarea&gt;&lt;/textarea&gt; - Multiline text
+                        &lt;button type="submit"&gt;Submit&lt;/button&gt;
+                    &lt;/form&gt;
+                    </code>
+                </div>
+            </div>
+
+            <div class="section-divider"></div>
+
+            <!-- Enhanced Git Section -->
+            <h2>Git Workflow Explained</h2>
+
+            <div class="note-card">
+                <h2>Git Basic Workflow</h2>
+                <div class="terminal-card">
+                    <p>Working Directory</p>
+                    <p class="command">↓ git add</p>
+                    <p>Staging Area</p>
+                    <p class="command">↓ git commit</p>
+                    <p>Local Repository</p>
+                    <p class="command">↓ git push</p>
+                    <p>Remote Repository</p>
+                </div>
+            </div>
+
+            <div class="note-card">
+                <h2>Common Git Scenarios</h2>
+                <div class="terminal-card">
+                    <p class="command"># Create new branch and switch to it</p>
+                    <code>$ git checkout -b feature-branch</code>
+
+                    <p class="command"># Undo last commit but keep changes</p>
+                    <code>$ git reset --soft HEAD~1</code>
+
+                    <p class="command"># Discard changes in working directory</p>
+                    <code>$ git checkout -- filename</code>
+
+                    <p class="command"># Update branch with main changes</p>
+                    <code>$ git checkout main
+$ git pull
+$ git checkout feature-branch
+$ git merge main</code>
+                </div>
+            </div>
+
+            <div class="note-card">
+                <h2>.gitignore Essentials</h2>
+                <div class="example">
+                    <code>
+                    # Node modules
+                    node_modules/
+                    
+                    # Environment variables
+                    .env
+                    
+                    # Build output
+                    dist/
+                    build/
+                    
+                    # IDE settings
+                    .vscode/
+                    .idea/
+                    
+                    # Logs
+                    *.log
+                    
+                    # OS generated files
+                    .DS_Store
+                    Thumbs.db
+                    </code>
+                </div>
+            </div>
+
+            <div class="note-card">
+                <h2>Best Practices</h2>
+                <ul>
+                    <li>Write clear, descriptive commit messages</li>
+                    <li>Commit early and often</li>
+                    <li>Create branches for new features</li>
+                    <li>Review changes before committing</li>
+                    <li>Keep repositories clean and organized</li>
+                    <li>Document your code and changes</li>
+                    <li>Test before pushing to main branch</li>
+                </ul>
+            </div>
+
+            <!-- Existing content -->
             <div class="note-card">
                 <h2>What is HTML?</h2>
                 <p>HTML (HyperText Markup Language) is the standard markup language for creating web pages. It describes the structure of web content using elements and tags.</p>
