@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Timetable</title>
+    <style>
+        :root {
+            --primary-dark: #1a5f7a;
+            --primary-light: #e8f4f8;
+            --accent-1: #ff6b6b;
+            --accent-2: #4ecdc4;
+            --lab-bg: #ffe8e8;
+            --theory-bg: #e8f4f8;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        .timetable-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--primary-dark);
+        }
+
+        .timetable {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .timetable th,
+        .timetable td {
+            border: 1px solid #ddd;
+            padding: 12px 8px;
+            text-align: center;
+            font-size: 0.9em;
+        }
+
+        .timetable thead th {
+            background: var(--primary-dark);
+            color: white;
+            font-weight: 500;
+            font-size: 0.85em;
+            white-space: nowrap;
+            padding: 12px 6px;
+        }
+
+        .timetable tbody th {
+            background: var(--primary-dark);
+            color: white;
+            font-weight: 500;
+            padding: 8px;
+            width: 60px;
+            font-size: 0.9em;
+        }
+
+        .lab {
+            background: var(--lab-bg) !important;
+            font-weight: 500;
+            color: #d63031;
+        }
+
+        .theory {
+            background: var(--theory-bg);
+            color: var(--primary-dark);
+        }
+
+        .timetable tr:nth-child(even) td:not(.lab) {
+            background: #f8f9fa;
+        }
+
+        .legend {
+            margin-top: 20px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9em;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border: 1px solid #ddd;
+        }
+
+        @media (max-width: 768px) {
+            .timetable {
+                font-size: 0.8em;
+            }
+            
+            .timetable th,
+            .timetable td {
+                padding: 8px 4px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="timetable-container">
+        <div class="header">
+            <h1>Class Timetable</h1>
+            <p>Computer Science Department</p>
+        </div>
+        
+        <table class="timetable">
+            <thead>
+                <tr>
+                    <th>Day</th>
+                    <th>9:00-9:50</th>
+                    <th>9:50-10:40</th>
+                    <th>10:40-11:30</th>
+                    <th>11:30-12:20</th>
+                    <th>12:20-1:10</th>
+                    <th>1:10-2:00</th>
+                    <th>2:00-2:50</th>
+                    <th>2:50-3:40</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>MON</th>
+                    <td colspan="2" class="lab">DBMS LAB</td>
+                    <td class="theory">DAA</td>
+                    <td class="theory">OS</td>
+                    <td>LUNCH</td>
+                    <td class="theory">FPP</td>
+                    <td class="theory">WT</td>
+                    <td class="theory">DBMS</td>
+                </tr>
+                <tr>
+                    <th>TUE</th>
+                    <td class="theory">OS</td>
+                    <td class="theory">DAA</td>
+                    <td colspan="2" class="lab">WT LAB</td>
+                    <td>LUNCH</td>
+                    <td class="theory">DBMS</td>
+                    <td class="theory">FPP</td>
+                    <td class="theory">WT</td>
+                </tr>
+                <tr>
+                    <th>WED</th>
+                    <td class="theory">WT</td>
+                    <td class="theory">OS</td>
+                    <td class="theory">DAA</td>
+                    <td class="theory">DBMS</td>
+                    <td>LUNCH</td>
+                    <td colspan="2" class="lab">FPP LAB</td>
+                    <td class="theory">FPP</td>
+                </tr>
+                <tr>
+                    <th>THU</th>
+                    <td class="theory">DAA</td>
+                    <td class="theory">FPP</td>
+                    <td colspan="2" class="lab">DBMS LAB</td>
+                    <td>LUNCH</td>
+                    <td class="theory">WT</td>
+                    <td class="theory">OS</td>
+                    <td class="theory">DBMS</td>
+                </tr>
+                <tr>
+                    <th>FRI</th>
+                    <td colspan="2" class="lab">WT LAB</td>
+                    <td class="theory">OS</td>
+                    <td class="theory">DBMS</td>
+                    <td>LUNCH</td>
+                    <td colspan="2" class="lab">FPP LAB</td>
+                    <td class="theory">DAA</td>
+                </tr>
+            </tbody>
+
+            x
+        </table>
+
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color" style="background: var(--lab-bg);"></div>
+                <span>Laboratory Sessions</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: var(--theory-bg);"></div>
+                <span>Theory Classes</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
