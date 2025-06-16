@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HTML & Git Bash Notes - Evergreen Theme</title>
+    <!-- Adding Favicon -->
+    <link rel="icon" type="image/png" href="https://www.w3.org/html/logo/badge/html5-badge-h-solo.png">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Open+Sans:wght@300;400;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -166,6 +168,66 @@
             font-size: 1em;
         }
 
+        /* New styles for media elements */
+        .logo-container {
+            text-align: center;
+            margin: 30px 0;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .html-logo {
+            width: 150px;
+            height: auto;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            margin: 30px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(45, 90, 39, 0.1);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 8px;
+        }
+
+        /* Audio player styling */
+        .audio-section {
+            background: var(--code-bg);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .audio-player {
+            width: 100%;
+            margin: 10px 0;
+        }
+
+        .audio-example {
+            margin: 20px 0;
+            padding: 15px;
+            background: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(45, 90, 39, 0.08);
+        }
+
         /* Subtle leaf pattern in background */
         .page-wrapper::before {
             content: '';
@@ -184,6 +246,11 @@
 <body>
     <div class="page-wrapper">
         <div class="container">
+            <!-- Adding HTML Logo -->
+            <div class="logo-container">
+                <img src="https://www.w3.org/html/logo/downloads/HTML5_Badge_512.png" alt="HTML5 Logo" class="html-logo">
+            </div>
+
             <h1>HTML & Git Bash Notes</h1>
 
             <!-- Introduction Section -->
@@ -560,6 +627,81 @@ $ git merge main</code>
                     <p class="command">$ git config --list</p>
                     List all configurations
                 </div>
+            </div>
+
+            <!-- Adding Video Section -->
+            <div class="note-card">
+                <h2>Introduction to HTML5</h2>
+                <div class="video-container">
+                                       
+                    <iframe 
+                        src="https://www.youtube.com/embed/UB1O30fR-EE"
+                        width="600"
+                        height="400">
+                    </iframe>
+                    
+                </div>
+                <p>Watch this comprehensive tutorial to get started with HTML5 basics and website building.</p>
+            </div>
+
+            <!-- Adding Audio Section -->
+            <div class="note-card">
+                <h2>HTML Audio Elements</h2>
+                <p>The HTML <code>&lt;audio&gt;</code> element is used to embed sound content in documents.</p>
+                
+                <div class="audio-section">
+                    <h3>Sample Audio Player</h3>
+                    <!-- Sample audio from NASA's public domain sounds -->
+                    <audio controls class="audio-player">
+                        <source src="https://www.nasa.gov/wp-content/uploads/2015/07/Journey-to-Mars.mp3" type="audio/mpeg">
+                        <source src="https://www.nasa.gov/wp-content/uploads/2015/07/Journey-to-Mars.ogg" type="audio/ogg">
+                        Your browser does not support the audio element.
+                    </audio>
+                    <p><small>Credit: NASA Public Domain Audio</small></p>
+                </div>
+
+                <div class="audio-example">
+                    <h3>Audio Element Code Example:</h3>
+                    <code>
+                    &lt;audio controls&gt;<br>
+                    &nbsp;&nbsp;&lt;source src="audio.mp3" type="audio/mpeg"&gt;<br>
+                    &nbsp;&nbsp;&lt;source src="audio.ogg" type="audio/ogg"&gt;<br>
+                    &nbsp;&nbsp;Your browser does not support the audio element.<br>
+                    &lt;/audio&gt;
+                    </code>
+                </div>
+
+                <h3>Audio Attributes:</h3>
+                <ul>
+                    <li><code>controls</code> - Displays audio controls (play/pause, volume)</li>
+                    <li><code>autoplay</code> - Automatically starts playing (often blocked by browsers)</li>
+                    <li><code>loop</code> - Repeats the audio when finished</li>
+                    <li><code>muted</code> - Sets the audio output to muted by default</li>
+                    <li><code>preload</code> - Specifies how the audio should be loaded (auto/metadata/none)</li>
+                </ul>
+            </div>
+
+            <div class="section-divider"></div>
+
+            <!-- Footer Section -->
+            <div class="note-card">
+                <h2>Further Reading & Resources</h2>
+                <ul>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank">MDN Web Docs - HTML</a></li>
+                    <li><a href="https://git-scm.com/doc" target="_blank">Git Documentation</a></li>
+                    <li><a href="https://www.codecademy.com/learn/learn-html" target="_blank">Codecademy - Learn HTML</a></li>
+                    <li><a href="https://www.freecodecamp.org/learn/responsive-web-design/#basic-html-and-html5" target="_blank">freeCodeCamp - Basic HTML and HTML5</a></li>
+                </ul>
+            </div>
+
+            <div class="note-card">
+                <h2>About the Author</h2>
+                <p>Passionate web developer and educator, sharing knowledge and resources for aspiring developers.</p>
+            </div>
+
+            <div class="note-card">
+                <h2>Feedback & Contributions</h2>
+                <p>Suggestions and contributions are welcome! Please reach out through the contact form on the website.</p>
             </div>
         </div>
     </div>
