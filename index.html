@@ -1,1 +1,444 @@
-"<h1>Full Stack Class</h1>" 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML & Git Bash Notes - Retro Ghibli Style</title>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'Akira';
+            src: url('https://fonts.cdnfonts.com/css/akira-expanded') format('woff2');
+        }
+
+        :root {
+            --primary-color: #ff0051;
+            --secondary-color: #00ff95;
+            --accent-color: #86c9c0;
+            --dark-bg: #1a1a1a;
+            --light-bg: #f0f7f9;
+        }
+
+        body {
+            font-family: 'Share Tech Mono', monospace;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--dark-bg);
+            background-image: 
+                url('https://i.imgur.com/8MhwzxY.png'),
+                linear-gradient(45deg, #1a1a1a 0%, #2a2a2a 100%);
+            background-attachment: fixed;
+            background-size: cover;
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        .page-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+        }
+
+        .container {
+            background: rgba(26, 26, 26, 0.95);
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 0 50px rgba(0, 255, 149, 0.1),
+                        0 0 100px rgba(255, 0, 81, 0.1);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(134, 201, 192, 0.3);
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, 
+                var(--primary-color) 0%, 
+                var(--secondary-color) 50%,
+                var(--primary-color) 100%);
+            animation: gradient-shift 5s linear infinite;
+        }
+
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
+        h1 {
+            font-family: 'Akira', sans-serif;
+            color: var(--primary-color);
+            text-align: center;
+            font-size: 3em;
+            margin: 40px 0;
+            text-shadow: 
+                3px 3px 0px var(--dark-bg),
+                5px 5px 0px rgba(0, 255, 149, 0.5);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            position: relative;
+        }
+
+        h1::after {
+            content: attr(data-text);
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 0;
+            color: var(--secondary-color);
+            filter: blur(1px);
+            opacity: 0.7;
+            z-index: -1;
+        }
+
+        h2 {
+            font-family: 'Akira', sans-serif;
+            color: var(--secondary-color);
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 15px;
+            margin-top: 40px;
+            font-size: 1.8em;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .note-card {
+            background: rgba(40, 40, 40, 0.95);
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 20px;
+            box-shadow: 
+                0 5px 20px rgba(0, 0, 0, 0.3),
+                0 0 15px rgba(134, 201, 192, 0.2);
+            border-left: 5px solid var(--primary-color);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .note-card:hover {
+            transform: translateY(-5px) scale(1.01);
+            box-shadow: 
+                0 8px 25px rgba(0, 0, 0, 0.4),
+                0 0 20px rgba(134, 201, 192, 0.3);
+        }
+
+        .note-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, 
+                transparent 50%, 
+                rgba(255, 0, 81, 0.1) 50%);
+        }
+
+        code {
+            background-color: var(--dark-bg);
+            padding: 4px 8px;
+            border-radius: 4px;
+            color: var(--secondary-color);
+            font-family: 'Share Tech Mono', monospace;
+            border: 1px solid rgba(134, 201, 192, 0.3);
+        }
+
+        .terminal-card {
+            background-color: var(--dark-bg);
+            color: var(--secondary-color);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            font-family: 'Share Tech Mono', monospace;
+            border: 1px solid var(--primary-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .terminal-card::before {
+            content: '>';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: var(--primary-color);
+            font-size: 1.2em;
+            opacity: 0.5;
+        }
+
+        .command {
+            color: var(--primary-color);
+            margin: 15px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .command::before {
+            content: '$';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+        }
+
+        ul li {
+            margin: 12px 0;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        ul li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+        }
+
+        .section-divider {
+            height: 4px;
+            background: linear-gradient(90deg, 
+                transparent,
+                var(--primary-color),
+                var(--secondary-color),
+                var(--primary-color),
+                transparent);
+            margin: 60px 0;
+            border-radius: 2px;
+            opacity: 0.8;
+        }
+
+        .example {
+            background-color: var(--dark-bg);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            color: var(--secondary-color);
+            font-family: 'Share Tech Mono', monospace;
+            border: 1px solid var(--primary-color);
+            position: relative;
+            box-shadow: 0 0 20px rgba(0, 255, 149, 0.1);
+        }
+
+        @keyframes glow {
+            0% { box-shadow: 0 0 20px rgba(0, 255, 149, 0.1); }
+            50% { box-shadow: 0 0 30px rgba(255, 0, 81, 0.2); }
+            100% { box-shadow: 0 0 20px rgba(0, 255, 149, 0.1); }
+        }
+
+        .note-card:hover .terminal-card,
+        .note-card:hover .example {
+            animation: glow 2s infinite;
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--dark-bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+        <div class="container">
+            <h1 data-text="🌿 HTML & Git Bash Notes 🌿">🌿 HTML & Git Bash Notes 🌿</h1>
+
+            <!-- HTML Section -->
+            <div class="note-card">
+                <h2>What is HTML?</h2>
+                <p>HTML (HyperText Markup Language) is the standard markup language for creating web pages. It describes the structure of web content using elements and tags.</p>
+            </div>
+
+            <div class="note-card">
+                <h2>Basic HTML Structure</h2>
+                <div class="example">
+                    <code>
+                        &lt;!DOCTYPE html&gt;<br>
+                        &lt;html&gt;<br>
+                        &nbsp;&nbsp;&lt;head&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;Page Title&lt;/title&gt;<br>
+                        &nbsp;&nbsp;&lt;/head&gt;<br>
+                        &nbsp;&nbsp;&lt;body&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;Content goes here<br>
+                        &nbsp;&nbsp;&lt;/body&gt;<br>
+                        &lt;/html&gt;
+                    </code>
+                </div>
+            </div>
+
+            <div class="note-card">
+                <h2>Common HTML Elements</h2>
+                <ul>
+                    <li><code>&lt;h1&gt;</code> to <code>&lt;h6&gt;</code> - Headings</li>
+                    <li><code>&lt;p&gt;</code> - Paragraphs</li>
+                    <li><code>&lt;div&gt;</code> - Container/Division</li>
+                    <li><code>&lt;span&gt;</code> - Inline container</li>
+                    <li><code>&lt;a&gt;</code> - Links</li>
+                    <li><code>&lt;img&gt;</code> - Images</li>
+                    <li><code>&lt;ul&gt;</code>, <code>&lt;ol&gt;</code>, <code>&lt;li&gt;</code> - Lists</li>
+                </ul>
+            </div>
+
+            <div class="note-card">
+                <h2>HTML Attributes</h2>
+                <p>Attributes provide additional information about elements:</p>
+                <div class="example">
+                    <code>&lt;img src="image.jpg" alt="description"&gt;</code><br>
+                    <code>&lt;a href="https://example.com"&gt;Link Text&lt;/a&gt;</code>
+                </div>
+            </div>
+
+            <div class="note-card">
+                <h2>Semantic HTML</h2>
+                <p>Semantic elements clearly describe their meaning:</p>
+                <ul>
+                    <li><code>&lt;header&gt;</code> - Header section</li>
+                    <li><code>&lt;nav&gt;</code> - Navigation links</li>
+                    <li><code>&lt;main&gt;</code> - Main content</li>
+                    <li><code>&lt;article&gt;</code> - Independent content</li>
+                    <li><code>&lt;footer&gt;</code> - Footer section</li>
+                </ul>
+            </div>
+
+            <div class="note-card">
+                <h2>Forms</h2>
+                <p>Forms are used to collect user input:</p>
+                <div class="example">
+                    <code>
+                        &lt;form&gt;<br>
+                        &nbsp;&nbsp;&lt;input type="text"&gt;<br>
+                        &nbsp;&nbsp;&lt;input type="submit"&gt;<br>
+                        &lt;/form&gt;
+                    </code>
+                </div>
+            </div>
+
+            <div class="note-card">
+                <h2>Best Practices</h2>
+                <ul>
+                    <li>Always declare DOCTYPE</li>
+                    <li>Use semantic elements when possible</li>
+                    <li>Include proper meta tags</li>
+                    <li>Make your HTML accessible</li>
+                    <li>Validate your HTML code</li>
+                </ul>
+            </div>
+
+            <div class="section-divider"></div>
+
+            <!-- Git Bash Basics Section -->
+            <h1>🌟 Git Bash Basics 🌟</h1>
+
+            <div class="note-card">
+                <h2>What is Git Bash?</h2>
+                <p>Git Bash is a terminal emulator that provides a Git command line experience on Windows. It includes common bash commands and Git-specific commands.</p>
+            </div>
+
+            <div class="note-card">
+                <h2>Essential Git Bash Commands</h2>
+                <div class="terminal-card">
+                    <p class="command">$ pwd</p>
+                    Print Working Directory - Shows current location
+                    
+                    <p class="command">$ ls</p>
+                    List files and directories
+                    
+                    <p class="command">$ cd [directory]</p>
+                    Change Directory
+                    
+                    <p class="command">$ mkdir [directory]</p>
+                    Create new directory
+                    
+                    <p class="command">$ touch [filename]</p>
+                    Create empty file
+                </div>
+            </div>
+
+            <div class="note-card">
+                <h2>Basic Git Commands</h2>
+                <div class="terminal-card">
+                    <p class="command">$ git init</p>
+                    Initialize a new Git repository
+                    
+                    <p class="command">$ git clone [url]</p>
+                    Clone a repository
+                    
+                    <p class="command">$ git add [file]</p>
+                    Add file to staging area
+                    
+                    <p class="command">$ git commit -m "message"</p>
+                    Commit staged changes
+                    
+                    <p class="command">$ git push</p>
+                    Push commits to remote repository
+                    
+                    <p class="command">$ git pull</p>
+                    Pull changes from remote repository
+                </div>
+            </div>
+
+            <div class="note-card">
+                <h2>Git Branch Operations</h2>
+                <div class="terminal-card">
+                    <p class="command">$ git branch</p>
+                    List all branches
+                    
+                    <p class="command">$ git branch [branch-name]</p>
+                    Create new branch
+                    
+                    <p class="command">$ git checkout [branch-name]</p>
+                    Switch to specified branch
+                    
+                    <p class="command">$ git merge [branch-name]</p>
+                    Merge specified branch into current branch
+                </div>
+            </div>
+
+            <div class="note-card">
+                <h2>Git Status and History</h2>
+                <div class="terminal-card">
+                    <p class="command">$ git status</p>
+                    Show working tree status
+                    
+                    <p class="command">$ git log</p>
+                    Show commit history
+                    
+                    <p class="command">$ git diff</p>
+                    Show changes between commits
+                </div>
+            </div>
+
+            <div class="note-card">
+                <h2>Git Configuration</h2>
+                <div class="terminal-card">
+                    <p class="command">$ git config --global user.name "[name]"</p>
+                    Set global username
+                    
+                    <p class="command">$ git config --global user.email "[email]"</p>
+                    Set global email
+                    
+                    <p class="command">$ git config --list</p>
+                    List all configurations
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
