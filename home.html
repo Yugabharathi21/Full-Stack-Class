@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OliveAuth | Home</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: url('https://static.vecteezy.com/system/resources/previews/018/939/186/large_2x/topographic-background-and-texture-abstraction-with-place-for-text-topo-backdrop-lines-contour-geographic-grid-modern-black-and-white-topographic-contours-lines-of-mountains-topography-map-art-vector.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #1c1c1c;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      background-color: rgba(255, 255, 255, 0.8);
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 1rem 0;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      backdrop-filter: blur(5px);
+      z-index: 999;
+    }
+
+    nav a {
+      color: #556b2f;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: #3d4e22;
+      text-decoration: underline;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 4rem auto;
+      padding: 2rem;
+      background-color: rgba(255, 255, 255, 0.95);
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2rem;
+      color: #3d4e22;
+    }
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    a {
+      color: #6a8f3c;
+      font-weight: 500;
+    }
+
+    a:hover {
+      text-decoration: underline;
+      color: #4c6f2b;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="active">Home</a>
+    <a href="css.html">CSS</a>
+    <a href="login.html">Login</a>
+    <a href="signin.html">Sign Up</a>
+    <a href="timetable.html">Class Timetable</a>
+  </nav>
+
+  <div class="container">
+    <h1>Welcome to OliveAuth</h1>
+    <p>
+      This is your secure, elegant authentication portal powered by clean design and modern aesthetics. 
+      Use the links above to explore login, registration, or view your class timetable.
+    </p>
+    <p>
+      <strong>Need access?</strong> Start by <a href="signin.html">signing up</a>, or <a href="login.html">log in</a> if you already have an account.
+    </p>
+    <p>
+      To manage your academic schedule, visit the <a href="timetable.html">Class Timetable</a> page.
+    </p>
+    <p>
+      Want to see what we’re building next? Stay tuned for future updates on OliveAuth’s dashboard features.
+    </p>
+  </div>
+</body>
+</html>
