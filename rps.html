@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medieval Rock Paper Scissors</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
+        
+        :root {
+            --gold: #ffd700;
+            --parchment: #f4e4bc;
+            --ink: #2c1810;
+            --border: #8d6e63;
+            --shadow: rgba(0, 0, 0, 0.2);
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #2a2a2a;
+            font-family: 'MedievalSharp', cursive;
+        }
+
+        .game-container {
+            background: var(--parchment);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            position: relative;
+            max-width: 600px;
+            width: 90%;
+            margin: 20px;
+            border: 8px solid #5d4037;
+            box-shadow: 
+                inset 0 0 20px rgba(0,0,0,0.2),
+                0 0 20px rgba(0,0,0,0.4);
+        }
+
+        h1 {
+            color: var(--ink);
+            font-size: 2em;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px var(--shadow);
+        }
+
+        .scroll-text {
+            color: var(--ink);
+            font-size: 1.2em;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .choices {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .choice {
+            width: 100px;
+            height: 100px;
+            cursor: pointer;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .choice-content {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, var(--gold), #b8860b);
+            border: 3px solid #b8860b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .choice:hover {
+            transform: translateY(-5px);
+        }
+
+        .choice-icon {
+            font-size: 2.5em;
+        }
+
+        .choice-label {
+            margin-top: 0.5em;
+            color: var(--ink);
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+
+        .battle-area {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .player-choice, .computer-choice {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 2px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            background: white;
+            box-shadow: 0 2px 5px var(--shadow);
+        }
+
+        .vs {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .vs-decoration {
+            font-size: 2em;
+            color: var(--gold);
+        }
+
+        .vs-text {
+            font-size: 1em;
+            color: var(--ink);
+            font-weight: bold;
+        }
+
+        .winner {
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .result {
+            font-size: 1.5em;
+            color: var(--ink);
+            margin: 1rem 0;
+            min-height: 1.5em;
+        }
+
+        .score {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 2px solid var(--border);
+        }
+
+        .score-knight, .score-dragon {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        @media (max-width: 600px) {
+            .game-container {
+                padding: 1rem;
+            }
+
+            .choices {
+                gap: 1rem;
+            }
+
+            .choice {
+                width: 80px;
+                height: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h1>Medieval Battle of Choices</h1>
+        <div class="scroll-text">Choose thy weapon wisely, brave warrior!</div>
+        
+        <div class="choices">
+            <div class="choice" onclick="play('🗿')">
+                <div class="choice-content">
+                    <div class="choice-icon">🗿</div>
+                    <div class="choice-label">Stone</div>
+                </div>
+            </div>
+            <div class="choice" onclick="play('📜')">
+                <div class="choice-content">
+                    <div class="choice-icon">📜</div>
+                    <div class="choice-label">Scroll</div>
+                </div>
+            </div>
+            <div class="choice" onclick="play('✂️')">
+                <div class="choice-content">
+                    <div class="choice-icon">✂️</div>
+                    <div class="choice-label">Blade</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="battle-area">
+            <div class="combatant">
+                <div class="player-choice"></div>
+                <div class="combatant-label">Knight</div>
+            </div>
+            <div class="vs">
+                <div class="vs-decoration">⚔️</div>
+                <div class="vs-text">VERSUS</div>
+            </div>
+            <div class="combatant">
+                <div class="computer-choice"></div>
+                <div class="combatant-label">Dragon</div>
+            </div>
+        </div>
+
+        <div class="result"></div>
+        <div class="score">
+            <div class="score-knight">
+                <span class="score-icon">⚔️</span>
+                Knight: <span id="playerScore">0</span>
+            </div>
+            <div class="score-dragon">
+                <span class="score-icon">🐉</span>
+                Dragon: <span id="computerScore">0</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let playerScore = 0;
+        let computerScore = 0;
+        const choices = ['🗿', '📜', '✂️'];
+        const resultMessages = {
+            win: [
+                "A glorious victory!",
+                "The knight prevails!",
+                "Victory is yours!"
+            ],
+            lose: [
+                "The dragon prevails!",
+                "A noble defeat...",
+                "The kingdom mourns..."
+            ],
+            draw: [
+                "A mighty stalemate!",
+                "Neither yields!",
+                "The battle continues!"
+            ]
+        };
+
+        function getRandomChoice() {
+            return choices[Math.floor(Math.random() * choices.length)];
+        }
+
+        function getRandomMessage(result) {
+            const messages = resultMessages[result];
+            return messages[Math.floor(Math.random() * messages.length)];
+        }
+
+        function determineWinner(playerChoice, computerChoice) {
+            if (playerChoice === computerChoice) return 'draw';
+            if (
+                (playerChoice === '🗿' && computerChoice === '✂️') ||
+                (playerChoice === '📜' && computerChoice === '🗿') ||
+                (playerChoice === '✂️' && computerChoice === '📜')
+            ) {
+                return 'win';
+            }
+            return 'lose';
+        }
+
+        function play(playerChoice) {
+            const playerDisplay = document.querySelector('.player-choice');
+            const computerDisplay = document.querySelector('.computer-choice');
+            const resultDisplay = document.querySelector('.result');
+            
+            // Reset previous states
+            playerDisplay.classList.remove('winner');
+            computerDisplay.classList.remove('winner');
+            resultDisplay.textContent = '';
+            
+            // Show player's choice
+            playerDisplay.textContent = playerChoice;
+            
+            // Animate computer's choice
+            let cycleCount = 0;
+            const cycleInterval = setInterval(() => {
+                computerDisplay.textContent = choices[cycleCount % 3];
+                cycleCount++;
+            }, 100);
+            
+            setTimeout(() => {
+                clearInterval(cycleInterval);
+                const computerChoice = getRandomChoice();
+                computerDisplay.textContent = computerChoice;
+                
+                const result = determineWinner(playerChoice, computerChoice);
+                const message = getRandomMessage(result);
+                
+                if (result === 'win') {
+                    playerScore++;
+                    playerDisplay.classList.add('winner');
+                } else if (result === 'lose') {
+                    computerScore++;
+                    computerDisplay.classList.add('winner');
+                }
+                
+                document.getElementById('playerScore').textContent = playerScore;
+                document.getElementById('computerScore').textContent = computerScore;
+                resultDisplay.textContent = message;
+            }, 600);
+        }
+    </script>
+</body>
+</html>

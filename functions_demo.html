@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Functions Demo</title>
+    <style>
+        :root {
+            --olive-dark: #556B2F;
+            --olive-medium: #6B8E23;
+            --olive-light: #9AB973;
+            --cream: #F5F5DC;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--cream);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h1, h2 {
+            color: var(--olive-dark);
+        }
+
+        .function-section {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid var(--olive-light);
+            border-radius: 5px;
+            background-color: #fff;
+        }
+
+        .output {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-family: monospace;
+            min-height: 20px;
+        }
+
+        button {
+            background-color: var(--olive-medium);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        button:hover {
+            background-color: var(--olive-dark);
+        }
+
+        code {
+            background-color: #f8f8f8;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>JavaScript Functions Demo</h1>
+
+        <!-- Regular Function -->
+        <div class="function-section">
+            <h2>1. Regular Function</h2>
+            <code>
+                function greet(name) { return "Hello, " + name; }
+            </code>
+            <button onclick="showRegularFunction()">Try Regular Function</button>
+            <div id="regularOutput" class="output"></div>
+        </div>
+
+        <!-- Arrow Function -->
+        <div class="function-section">
+            <h2>2. Arrow Function</h2>
+            <code>
+                const add = (a, b) => a + b;
+            </code>
+            <button onclick="showArrowFunction()">Try Arrow Function</button>
+            <div id="arrowOutput" class="output"></div>
+        </div>
+
+        <!-- Function Expression -->
+        <div class="function-section">
+            <h2>3. Function Expression</h2>
+            <code>
+                const multiply = function(x, y) { return x * y; };
+            </code>
+            <button onclick="showFunctionExpression()">Try Function Expression</button>
+            <div id="expressionOutput" class="output"></div>
+        </div>
+
+        <!-- Callback Function -->
+        <div class="function-section">
+            <h2>4. Callback Function</h2>
+            <code>
+                function processUser(callback) { callback("John"); }
+            </code>
+            <button onclick="showCallbackFunction()">Try Callback Function</button>
+            <div id="callbackOutput" class="output"></div>
+        </div>
+
+        <!-- Higher Order Function -->
+        <div class="function-section">
+            <h2>5. Higher Order Function</h2>
+            <code>
+                const numbers = [1, 2, 3, 4, 5];
+                numbers.map(num => num * 2);
+            </code>
+            <button onclick="showHigherOrderFunction()">Try Higher Order Function</button>
+            <div id="higherOrderOutput" class="output"></div>
+        </div>
+
+        <!-- IIFE -->
+        <div class="function-section">
+            <h2>6. IIFE (Immediately Invoked Function Expression)</h2>
+            <code>
+                (function() { console.log("I run immediately!"); })();
+            </code>
+            <button onclick="showIIFE()">Try IIFE</button>
+            <div id="iifeOutput" class="output"></div>
+        </div>
+        
+        <!-- Generator Function -->
+        <div class="function-section">
+            <h2>7. Generator Function</h2>
+            <code>
+                function* numberGenerator() { yield 1; yield 2; yield 3; }
+            </code>
+            <button onclick="showGeneratorFunction()">Try Generator Function</button>
+            <div id="generatorOutput" class="output"></div>
+        </div>
+
+        <!-- Async Function -->
+        <div class="function-section">
+            <h2>8. Async Function</h2>
+            <code>
+                async function fetchData() { 
+                    return await new Promise(resolve => 
+                        setTimeout(() => resolve("Data received!"), 1000)
+                    );
+                }
+            </code>
+            <button onclick="showAsyncFunction()">Try Async Function</button>
+            <div id="asyncOutput" class="output"></div>
+        </div>
+    </div>
+
+    <script>
+        // Regular Function
+        function showRegularFunction() {
+            function greet(name) {
+                return "Hello, " + name;
+            }
+            document.getElementById('regularOutput').textContent = greet("Alice");
+        }
+
+        // Arrow Function
+        function showArrowFunction() {
+            const add = (a, b) => a + b;
+            document.getElementById('arrowOutput').textContent = `2 + 3 = ${add(2, 3)}`;
+        }
+
+        // Function Expression
+        function showFunctionExpression() {
+            const multiply = function(x, y) {
+                return x * y;
+            };
+            document.getElementById('expressionOutput').textContent = `4 × 5 = ${multiply(4, 5)}`;
+        }
+
+        // Callback Function
+        function showCallbackFunction() {
+            function processUser(callback) {
+                callback("John");
+            }
+            processUser((name) => {
+                document.getElementById('callbackOutput').textContent = `Processed user: ${name}`;
+            });
+        }
+
+        // Higher Order Function
+        function showHigherOrderFunction() {
+            const numbers = [1, 2, 3, 4, 5];
+            const doubled = numbers.map(num => num * 2);
+            document.getElementById('higherOrderOutput').textContent = 
+                `Original: [${numbers}] → Doubled: [${doubled}]`;
+        }
+
+        // IIFE
+        function showIIFE() {
+            const result = (function() {
+                return "IIFE executed!";
+            })();
+            document.getElementById('iifeOutput').textContent = result;
+        }
+
+        // Generator Function
+        function showGeneratorFunction() {
+            function* numberGenerator() {
+                yield 1;
+                yield 2;
+                yield 3;
+            }
+            const gen = numberGenerator();
+            const values = [];
+            for (const num of gen) {
+                values.push(num);
+            }
+            document.getElementById('generatorOutput').textContent = 
+                `Generated values: ${values.join(', ')}`;
+        }
+
+        // Async Function
+        async function showAsyncFunction() {
+            const output = document.getElementById('asyncOutput');
+            output.textContent = 'Loading...';
+            
+            async function fetchData() {
+                return await new Promise(resolve => 
+                    setTimeout(() => resolve("Data received!"), 1000)
+                );
+            }
+
+            const result = await fetchData();
+            output.textContent = result;
+        }
+    </script>
+</body>
+</html>
